@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westcore Holdings - Warehousing & Storage</title>
+    <script>
+        (function() {
+            const oldTheme = localStorage.getItem('theme');
+            if (oldTheme && !localStorage.getItem('westcore-theme')) {
+                localStorage.setItem('westcore-theme', oldTheme);
+                localStorage.removeItem('theme');
+            }
+            const theme = localStorage.getItem('westcore-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <a href="/" class="company-logo westcore-logo">
+                        <img src="/images/logos/westcore-logo.svg" alt="Westcore Links Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo northhaul-logo">
+                        <img src="/images/logos/northhaul-logo.svg" alt="North Haul Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo holdings-logo">
+                        <img src="/images/logos/westcore holding-logo.svg" alt="WestCore Holdings Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="/">Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/about">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/about#our-team">Our Team</a></li>
+                            <li><a href="/about#mission">Mission</a></li>
+                            <li><a href="/about#history">History</a></li>
+                            <li><a href="/about#certifications">Industry Certifications</a></li>
+                            <li><a href="/about#reviews">Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="active">Company</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/westcore">Westcore Links</a></li>
+                            <li><a href="/northhaul">NorthHaul</a></li>
+                            <li><a href="/storage" class="active">Westcore Holdings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/admin" class="admin-link">Admin</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <div class="container">
+                <h1>Westcore Holdings</h1>
+                <p class="hero-subtitle">Warehousing and Storage Solutions</p>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="section-content">
+                    <p>Westcore Holdings provides secure, professional warehousing and storage solutions for businesses across North America. Our state-of-the-art facilities are designed to meet diverse storage needs with the highest standards of security and accessibility.</p>
+                    
+                    <h2>Storage Solutions</h2>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <h3>Secure Warehousing</h3>
+                            <p>Climate-controlled facilities with 24/7 security monitoring, ensuring your inventory is protected and accessible when you need it.</p>
+                        </div>
+                        <div class="team-card">
+                            <h3>Inventory Management</h3>
+                            <p>Modern tracking systems and professional staff to manage your inventory with precision and efficiency.</p>
+                        </div>
+                        <div class="team-card">
+                            <h3>Flexible Storage</h3>
+                            <p>Short-term and long-term storage options with scalable solutions that grow with your business needs.</p>
+                        </div>
+                        <div class="team-card">
+                            <h3>Distribution Services</h3>
+                            <p>Integrated distribution capabilities to streamline your supply chain from storage to delivery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Certifications Section -->
+        <section id="certifications" class="about-section certifications-section">
+            <div class="container">
+                <h2>Industry certified</h2>
+                <p class="section-intro">Westcore Links prioritizes the safety of our clients and workers at all times. When you work with our team, you're working with a team that puts safety above profits.</p>
+                
+                <div class="certifications-scroll-wrapper">
+                    <div class="certifications-logos">
+                        <a href="https://www.cbsa-asfc.gc.ca/prog/fast-expres/about-apropos-eng.html" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/fast-enterprises.png" alt="Fast Enterprises - Free and Secure Trade">
+                        </a>
+                        <a href="https://amta.ca/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/hazmat.png" alt="HAZMAT Certified">
+                        </a>
+                        <a href="https://www.epa.gov/smartway" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/smartway.png" alt="SmartWay Transport Partnership">
+                        </a>
+                        <a href="https://www.isnetworld.com/en" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/isn.png" alt="ISN - ISNetworld">
+                        </a>
+                        <a href="https://www.avetta.com/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/avetta.png" alt="Avetta Member">
+                        </a>
+                        <a href="https://www.cbp.gov/border-security/ports-entry/cargo-security/CTPAT" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/ctpat.png" alt="C-TPAT - Customs Trade Partnership Against Terrorism">
+                        </a>
+                        <!-- Duplicate for seamless loop -->
+                        <a href="https://www.cbsa-asfc.gc.ca/prog/fast-expres/about-apropos-eng.html" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/fast-enterprises.png" alt="Fast Enterprises - Free and Secure Trade">
+                        </a>
+                        <a href="https://amta.ca/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/hazmat.png" alt="HAZMAT Certified">
+                        </a>
+                        <a href="https://www.epa.gov/smartway" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/smartway.png" alt="SmartWay Transport Partnership">
+                        </a>
+                        <a href="https://www.isnetworld.com/en" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/isn.png" alt="ISN - ISNetworld">
+                        </a>
+                        <a href="https://www.avetta.com/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/avetta.png" alt="Avetta Member">
+                        </a>
+                        <a href="https://www.cbp.gov/border-security/ports-entry/cargo-security/CTPAT" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/ctpat.png" alt="C-TPAT - Customs Trade Partnership Against Terrorism">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Secure Storage You Can Trust</h2>
+                <p>Contact us today to learn more about our warehousing and storage solutions tailored to your business.</p>
+                <div class="cta-buttons">
+                    <a href="/contact" class="cta-button">Contact Us</a>
+                    <a href="/services" class="cta-button secondary">View All Services</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Westcore Holdings. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/theme.js"></script>
+</body>
+</html>

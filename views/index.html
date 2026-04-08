@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westcore Links - Professional Trucking & Logistics</title>
+    <script>
+        // Apply theme immediately to prevent flash
+        (function() {
+            // Migrate old theme key
+            const oldTheme = localStorage.getItem('theme');
+            if (oldTheme && !localStorage.getItem('westcore-theme')) {
+                localStorage.setItem('westcore-theme', oldTheme);
+                localStorage.removeItem('theme');
+            }
+            const theme = localStorage.getItem('westcore-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#d4772c">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Westcore">
+    <link rel="apple-touch-icon" href="/images/logos/icon-192.jpg">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <a href="/" class="company-logo westcore-logo">
+                        <img src="/images/logos/westcore-logo.svg" alt="Westcore Links Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo northhaul-logo">
+                        <img src="/images/logos/northhaul-logo.svg" alt="North Haul Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo holdings-logo">
+                        <img src="/images/logos/westcore holding-logo.svg" alt="WestCore Holdings Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="/" class="active">Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/about">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/about#our-team">Our Team</a></li>
+                            <li><a href="/about#mission">Mission</a></li>
+                            <li><a href="/about#history">History</a></li>
+                            <li><a href="/about#certifications">Industry Certifications</a></li>
+                            <li><a href="/about#reviews">Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#">Company</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/westcore">Westcore Links</a></li>
+                            <li><a href="/northhaul">NorthHaul</a></li>
+                            <li><a href="/storage">Westcore Holdings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/admin" class="admin-link">Admin</a>
+                </div>
+            </div>
+        </nav>
+        
+    </header>
+
+    <main>
+        <section class="hero">            <div class="hero-background hero-slideshow" aria-hidden="true">
+                <img src="/images/hero/hero-1-placeholder.webp" class="hero-slide is-active" alt="">
+                <img src="/images/hero/hero-2-placeholder.webp" class="hero-slide " alt="">
+                <img src="/images/hero/hero-3-placeholder.webp" class="hero-slide" alt="">
+            </div>
+            <div class="hero-tiles">
+                <a href="/northhaul" class="hero-tile">
+                    <h2>NorthHaul Bulk Division</h2>
+                    <p> Food-Grade | chemical | Freight </p>
+                </a>
+                <a href="/westcore" class="hero-tile">
+                    <h2>WestCore Links</h2>
+                    <p>Professional trucking and logistics solutions</p>
+                </a>
+                <a href="/storage" class="hero-tile">
+                    <h2>WestCore Holdings</h2>
+                    <p>Warehousing and Storage</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Explore Services CTA Section -->
+        <section class="explore-services-cta">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2>Explore Our Services</h2>
+                    <p>Discover comprehensive trucking and logistics solutions tailored to your needs</p>
+                </div>
+                <a href="/services" class="cta-explore-btn">VIEW SERVICES</a>
+            </div>
+        </section>
+
+        <!-- Features Section with Images -->
+        <section class="features-section">
+            <div class="container">
+                <h2>Why Choose Westcore Links</h2>
+                <p class="section-intro">Professional trucking services you can depend on</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-image">
+                            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop&q=80" alt="Professional fleet">
+                        </div>
+                        <div class="feature-content">
+                            <h3>Modern Fleet</h3>
+                            <p>50+ trucks and trailers equipped with the latest technology for safe, efficient transport</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-image">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&q=80" alt="24/7 service">
+                        </div>
+                        <div class="feature-content">
+                            <h3>24/7/365 Service</h3>
+                            <p>Round-the-clock dispatch and support for all your urgent shipping needs</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-image">
+                            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&h=400&fit=crop&q=80" alt="Expert team">
+                        </div>
+                        <div class="feature-content">
+                            <h3>60+ Years Experience</h3>
+                            <p>Decades of expertise in heavy hauling and cross-border logistics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section class="map-section">
+            <div class="container">
+                <h2>Our Locations</h2>
+                <div id="map"></div>
+                
+                <!-- Locations List -->
+                <div class="locations-list" id="locations-list">
+                    <div class="loading-locations">Loading locations...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Certifications Section -->
+        <section id="certifications" class="about-section certifications-section">
+            <div class="container">
+                <h2>Industry certified</h2>
+                <p class="section-intro">Westcore Links prioritizes the safety of our clients and workers at all times. When you work with our team, you're working with a team that puts safety above profits.</p>
+                
+                <div class="certifications-scroll-wrapper">
+                    <div class="certifications-logos">
+                        <a href="https://www.cbsa-asfc.gc.ca/prog/fast-expres/about-apropos-eng.html" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/fast-enterprises.png" alt="Fast Enterprises - Free and Secure Trade">
+                        </a>
+                        <a href="https://amta.ca/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/hazmat.png" alt="HAZMAT Certified">
+                        </a>
+                        <a href="https://www.epa.gov/smartway" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/smartway.png" alt="SmartWay Transport Partnership">
+                        </a>
+                        <a href="https://www.isnetworld.com/en" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/isn.png" alt="ISN - ISNetworld">
+                        </a>
+                        <a href="https://www.avetta.com/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/avetta.png" alt="Avetta Member">
+                        </a>
+                        <a href="https://www.cbp.gov/border-security/ports-entry/cargo-security/CTPAT" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/ctpat.png" alt="C-TPAT - Customs Trade Partnership Against Terrorism">
+                        </a>
+                        <!-- Duplicate for seamless loop -->
+                        <a href="https://www.cbsa-asfc.gc.ca/prog/fast-expres/about-apropos-eng.html" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/fast-enterprises.png" alt="Fast Enterprises - Free and Secure Trade">
+                        </a>
+                        <a href="https://amta.ca/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/hazmat.png" alt="HAZMAT Certified">
+                        </a>
+                        <a href="https://www.epa.gov/smartway" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/smartway.png" alt="SmartWay Transport Partnership">
+                        </a>
+                        <a href="https://www.isnetworld.com/en" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/isn.png" alt="ISN - ISNetworld">
+                        </a>
+                        <a href="https://www.avetta.com/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/avetta.png" alt="Avetta Member">
+                        </a>
+                        <a href="https://www.cbp.gov/border-security/ports-entry/cargo-security/CTPAT" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/ctpat.png" alt="C-TPAT - Customs Trade Partnership Against Terrorism">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Business Information</h3>
+                <a href="/company">History & Mission</a>
+                <a href="/safety">Safety Standards</a>
+                <a href="/contact">Contact Us</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Shipping Freight</h3>
+                <a href="/services">Regional Transport</a>
+                <a href="/services">Cross-Border Logistics</a>
+                <a href="/services">Specialized Hauling</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Career Opportunities</h3>
+                <a href="/careers">Join Our Team</a>
+                <a href="/careers">Driver Opportunities</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Professional trucking services<br>across Western Canada</p>
+                <div class="footer-links">
+                    <a href="/contact">Get Quote</a>
+                    <a href="/gallery">View Fleet</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Westcore Links. All rights reserved. | Professional Trucking & Logistics Solutions</p>
+        </div>
+    </footer>
+
+    <script src="/js/theme.js"></script>
+    <script src="/js/hero-slideshow.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the map with zoom limits
+            const map = L.map('map', {
+                minZoom: 2,
+                maxZoom: 18
+            }).setView([50, -100], 3); // Center on North America
+
+            // Tile layers
+            const lightTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            });
+
+            const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '© CARTO',
+                subdomains: 'abcd'
+            });
+
+            // Function to update tiles based on theme
+            function updateMapTheme() {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                map.eachLayer(function(layer) {
+                    if (layer instanceof L.TileLayer) {
+                        map.removeLayer(layer);
+                    }
+                });
+                if (isDark) {
+                    darkTiles.addTo(map);
+                } else {
+                    lightTiles.addTo(map);
+                }
+            }
+
+            // Initial theme check
+            updateMapTheme();
+
+            // Listen for theme changes
+            window.addEventListener('themechange', updateMapTheme);
+
+            // Fetch locations from API and geocode if needed
+            async function loadMapLocations() {
+                try {
+                    console.log('Fetching locations from API...');
+                    const response = await fetch('/api/public/map-locations');
+                    const data = await response.json();
+                    
+                    console.log('API Response:', data);
+                    
+                    if (!data.success || !data.locations || data.locations.length === 0) {
+                        console.error('No locations found in API response');
+                        return;
+                    }
+                    
+                    console.log(`Found ${data.locations.length} locations`);
+                    const markers = [];
+                    
+                    for (const loc of data.locations) {
+                        let lat = loc.latitude;
+                        let lng = loc.longitude;
+                        
+                        console.log(`Processing location: ${loc.title}, address: ${loc.address}, lat: ${lat}, lng: ${lng}`);
+                        
+                        // If no coordinates, geocode the address
+                        if (!lat || !lng) {
+                            console.log(`Geocoding address: ${loc.address}`);
+                            const coords = await geocodeAddress(loc.address);
+                            if (!coords) {
+                                console.warn(`Failed to geocode: ${loc.address}`);
+                                continue;
+                            }
+                            lat = coords.lat;
+                            lng = coords.lng;
+                            console.log(`Geocoded to: ${lat}, ${lng}`);
+                            
+                            // Add delay to avoid hitting rate limits
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                        }
+                        
+                        const marker = L.marker([lat, lng]).addTo(map);
+                        console.log(`Added marker for ${loc.title}`);
+                        
+                        // Create popup with address and server-provided read-only note
+                        const isNisku = (loc.title || '').toLowerCase().includes('nisku') || (loc.address || '').toLowerCase().includes('nisku');
+                        const marketingNote = 'Westcore Links is a long-haul transport company based in Nisku, Alberta, and serving all destinations in North America with a fleet of over 50 trucks. Our 24/7/365 schedule can accommodate private or corporate projects. We guarantee safe and timely hauls.';
+                        const noteRaw = (isNisku && (!loc.note || String(loc.note).trim().length === 0)) ? marketingNote : (loc.note || '');
+                        const noteText = escapeHtml(noteRaw);
+                        const learnUrl = loc.learnMoreUrl || (isNisku ? '/westcore' : '');
+                        const learnMore = learnUrl ? `<div class="popup-learn-more"><a href="${learnUrl}">Learn more →</a></div>` : '';
+                        const popupHtml = `
+                            <div class="location-popup">
+                                <strong class="popup-title">${loc.title}</strong>
+                                <div class="popup-address">${loc.address || ''}</div>
+                                <div class="popup-note-readonly" role="button" tabindex="0" title="Click to view note" data-learn-more="${learnUrl}">${noteText || 'No notes available.'}</div>
+                                ${learnMore}
+                            </div>`;
+                        
+                        marker.bindPopup(popupHtml, {
+                            minWidth: 280,
+                            maxWidth: 420,
+                            keepInView: true,
+                            autoPan: true,
+                            autoPanPaddingTopLeft: [20, 120],
+                            autoPanPaddingBottomRight: [20, 20]
+                        });
+                        markers.push(marker);
+                    }
+                    
+                    console.log(`Finished processing locations. Total markers: ${markers.length}`);
+                    
+                    if (markers.length === 0) {
+                        console.warn('No markers were created - geocoding may have failed or addresses are invalid');
+                        alert('Unable to load location markers. Please check the browser console for details.');
+                        return;
+                    }
+                    
+                    // Fit map to show all markers (no visual padding)
+                    const group = new L.featureGroup(markers);
+                    const bounds = group.getBounds();
+                    map.fitBounds(bounds);
+                    
+                    // Allow slight slack in maxBounds so popup autoPan has room
+                    map.setMaxBounds(bounds.pad(0.05));
+                    map.options.maxBoundsViscosity = 1.0;
+                    
+                    // Use default zoom limits from map initialization (minZoom 2, maxZoom 18)
+                    
+                    // Ensure zoom control exists
+                    if (!map.zoomControl) L.control.zoom({ position: 'topleft' }).addTo(map);
+                    
+                    // Enable zoom interactions so users can zoom out
+                    if (map.scrollWheelZoom) map.scrollWheelZoom.enable();
+                    if (map.touchZoom) map.touchZoom.enable();
+                    if (map.doubleClickZoom) map.doubleClickZoom.enable();
+                    if (map.boxZoom) map.boxZoom.enable();
+                    if (map.dragging) map.dragging.enable();
+                    
+                    console.log(`Successfully added ${markers.length} markers to the map`);
+                    
+                    // Display locations list below map
+                    displayLocationsList(data.locations);
+                    
+                } catch (error) {
+                    console.error('Failed to load locations:', error);
+                    console.error('Error details:', error.message, error.stack);
+                    document.getElementById('locations-list').innerHTML = '<div class="error-locations">Failed to load locations. Please try again later.</div>';
+                }
+            }
+            
+            // Display locations as a list below the map
+            function displayLocationsList(locations) {
+                const listContainer = document.getElementById('locations-list');
+                if (!locations || locations.length === 0) {
+                    listContainer.innerHTML = '<div class="no-locations">No locations available.</div>';
+                    return;
+                }
+                
+                let html = '<div class="locations-grid">';
+                locations.forEach(loc => {
+                    const company = loc.company || 'Westcore Links';
+                    const learnUrl = loc.learnMoreUrl || '';
+                    
+                    html += `
+                        <div class="location-item">
+                            <h3 class="location-title">${escapeHtml(loc.title)}</h3>
+                            <p class="location-company">${escapeHtml(company)}</p>
+                            <p class="location-address">${escapeHtml(loc.address || '')}</p>
+                            ${learnUrl ? `<div class="location-actions"><a href="${learnUrl}" class="location-learn-more">Learn more →</a></div>` : ''}
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                listContainer.innerHTML = html;
+            }
+            
+            // Minimal HTML escaping for safe note display
+            function escapeHtml(str) {
+                if (!str) return '';
+                return str.replace(/[&<>"']/g, function(c) {
+                    return ({
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#39;'
+                    })[c];
+                });
+            }
+            
+            // Overlay for expanded note view over the map
+            const mapContainer = document.getElementById('map');
+            const overlay = document.createElement('div');
+            overlay.className = 'map-note-backdrop';
+            overlay.style.display = 'none';
+            overlay.innerHTML = `
+                <div class="map-note-panel" role="dialog" aria-modal="true" aria-labelledby="map-note-title">
+                    <button class="map-note-close" aria-label="Close note">×</button>
+                    <div class="map-note-content">
+                        <h3 id="map-note-title" class="map-note-title"></h3>
+                        <div class="map-note-address"></div>
+                        <div class="map-note-body"></div>
+                        <div class="map-note-actions"></div>
+                    </div>
+                </div>
+            `;
+            mapContainer.appendChild(overlay);
+
+            function openNoteOverlay(title, address, noteText, learnMoreUrl) {
+                overlay.querySelector('.map-note-title').textContent = title || '';
+                overlay.querySelector('.map-note-address').textContent = address || '';
+                overlay.querySelector('.map-note-body').textContent = noteText || '';
+                const actions = overlay.querySelector('.map-note-actions');
+                if (learnMoreUrl) {
+                    actions.innerHTML = `<a class="map-note-learn" href="${learnMoreUrl}">Learn more →</a>`;
+                } else {
+                    actions.innerHTML = '';
+                }
+                overlay.style.display = 'block';
+                // Close any open Leaflet popup under the overlay
+                map.closePopup();
+            }
+
+            function closeNoteOverlay() {
+                overlay.style.display = 'none';
+            }
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeNoteOverlay();
+            });
+            overlay.querySelector('.map-note-close').addEventListener('click', closeNoteOverlay);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeNoteOverlay();
+            });
+
+            // Click handler: expand note to overlay when note text in popup is clicked
+            document.addEventListener('click', function(e) {
+                const noteEl = e.target.closest('.popup-note-readonly');
+                if (!noteEl) return;
+                const popup = noteEl.closest('.location-popup');
+                const title = popup?.querySelector('.popup-title')?.textContent || '';
+                const address = popup?.querySelector('.popup-address')?.textContent || '';
+                const noteText = noteEl.textContent || '';
+                const learnMoreUrl = noteEl.getAttribute('data-learn-more') || '';
+                openNoteOverlay(title, address, noteText, learnMoreUrl);
+            });
+
+            // Keyboard accessibility: Enter/Space on note opens overlay
+            document.addEventListener('keydown', function(e) {
+                if ((e.key === 'Enter' || e.key === ' ') && document.activeElement?.classList.contains('popup-note-readonly')) {
+                    const noteEl = document.activeElement;
+                    const popup = noteEl.closest('.location-popup');
+                    const title = popup?.querySelector('.popup-title')?.textContent || '';
+                    const address = popup?.querySelector('.popup-address')?.textContent || '';
+                    const noteText = noteEl.textContent || '';
+                    const learnMoreUrl = noteEl.getAttribute('data-learn-more') || '';
+                    openNoteOverlay(title, address, noteText, learnMoreUrl);
+                    e.preventDefault();
+                }
+            });
+
+            // Geocode address using Nominatim
+            async function geocodeAddress(address) {
+                try {
+                    const url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(address);
+                    console.log('Geocoding URL:', url);
+                    const res = await fetch(url, { 
+                        headers: { 
+                            'Accept': 'application/json',
+                            'User-Agent': 'WestcoreLinks/1.0'
+                        } 
+                    });
+                    
+                    if (!res.ok) {
+                        console.error('Geocoding API error:', res.status, res.statusText);
+                        return null;
+                    }
+                    
+                    const data = await res.json();
+                    console.log('Geocoding response:', data);
+                    
+                    if (data && data[0]) {
+                        return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+                    } else {
+                        console.warn('No results found for address:', address);
+                    }
+                } catch (err) {
+                    console.error('Geocode error for', address, ':', err);
+                }
+                return null;
+            }
+            
+            // Notes are managed server-side; popups are read-only.
+            
+            // Load locations on page load
+            loadMapLocations();
+        });
+    </script>
+    
+    <!-- PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed:', err));
+        }
+    </script>
+
+</body>
+</html>

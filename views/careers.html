@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Westcore Links</title>
+    <script>
+        // Apply theme immediately to prevent flash
+        (function() {
+            // Migrate old theme key
+            const oldTheme = localStorage.getItem('theme');
+            if (oldTheme && !localStorage.getItem('westcore-theme')) {
+                localStorage.setItem('westcore-theme', oldTheme);
+                localStorage.removeItem('theme');
+            }
+            const theme = localStorage.getItem('westcore-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#d4772c">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Westcore">
+    <link rel="apple-touch-icon" href="/images/logos/icon-192.jpg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <a href="/" class="company-logo westcore-logo">
+                        <img src="/images/logos/westcore-logo.svg" alt="Westcore Links Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo northhaul-logo">
+                        <img src="/images/logos/northhaul-logo.svg" alt="North Haul Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo holdings-logo">
+                        <img src="/images/logos/westcore holding-logo.svg" alt="WestCore Holdings Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="/">Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/about">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/about#our-team">Our Team</a></li>
+                            <li><a href="/about#mission">Mission</a></li>
+                            <li><a href="/about#history">History</a></li>
+                            <li><a href="/about#certifications">Industry Certifications</a></li>
+                            <li><a href="/about#reviews">Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#">Company</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/westcore">Westcore Links</a></li>
+                            <li><a href="/northhaul">NorthHaul</a></li>
+                            <li><a href="/storage">Westcore Holdings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/careers" class="active">Careers</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/admin" class="admin-link">Admin</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="careers-hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Join Our Team</h1>
+                <p class="hero-subtitle">Build your career with North America's leading transportation company</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Employees</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Career Growth</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-join">
+            <div class="container">
+                <h2>Why Join Westcore Links?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h3>Competitive Compensation</h3>
+                        <p>Industry-leading wages with performance bonuses and regular pay increases</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Comprehensive Benefits</h3>
+                        <p>Full health, dental, and vision coverage for you and your family</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Career Advancement</h3>
+                        <p>Clear promotion pathways and professional development opportunities</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Work-Life Balance</h3>
+                        <p>Generous vacation time, flexible schedules, and home time guarantees</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Modern Equipment</h3>
+                        <p>Late-model trucks with the latest safety and comfort features</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Training Programs</h3>
+                        <p>Ongoing training and certification support to advance your skills</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="careers-content">
+            <div class="container">
+                <h2>Current Opportunities</h2>
+                <p class="section-intro">We're always looking for talented individuals to join our growing team. Explore our current openings below:</p>
+                
+                <div class="job-listings">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <h3>Class A CDL Driver</h3>
+                                <div class="job-meta">
+                                    <span class="job-type">Full-Time</span>
+                                    <span class="job-location"> Vancouver, BC</span>
+                                </div>
+                            </div>
+                            <button class="apply-btn">Apply Now</button>
+                        </div>
+                        <div class="job-description">
+                            <p>Join our professional driving team with competitive pay and excellent benefits. We value safety, reliability, and professionalism.</p>
+                            <ul class="job-requirements">
+                                <li><strong>Requirements:</strong></li>
+                                <li>Valid Class A CDL license</li>
+                                <li>Clean driving record (preferred)</li>
+                                <li>Minimum 2 years experience (preferred but not required)</li>
+                                <li>Excellent safety record</li>
+                            </ul>
+                            <div class="job-perks">
+                                <span class="perk"> $75,000 - $95,000/year</span>
+                                <span class="perk"> Home Weekly</span>
+                                <span class="perk"> Sign-on Bonus</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <h3>Logistics Coordinator</h3>
+                                <div class="job-meta">
+                                    <span class="job-type">Full-Time</span>
+                                    <span class="job-location"> Calgary, AB</span>
+                                </div>
+                            </div>
+                            <button class="apply-btn">Apply Now</button>
+                        </div>
+                        <div class="job-description">
+                            <p>Office-based role coordinating shipments and managing logistics operations. Be part of a dynamic team ensuring smooth operations.</p>
+                            <ul class="job-requirements">
+                                <li><strong>Requirements:</strong></li>
+                                <li>2+ years logistics or transportation experience</li>
+                                <li>Strong organizational and communication skills</li>
+                                <li>Proficiency with logistics software</li>
+                                <li>Problem-solving abilities</li>
+                            </ul>
+                            <div class="job-perks">
+                                <span class="perk"> $55,000 - $70,000/year</span>
+                                <span class="perk"> Office-based</span>
+                                <span class="perk"> Training Provided</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <h3>Diesel Mechanic</h3>
+                                <div class="job-meta">
+                                    <span class="job-type">Full-Time</span>
+                                    <span class="job-location"> Edmonton, AB</span>
+                                </div>
+                            </div>
+                            <button class="apply-btn">Apply Now</button>
+                        </div>
+                        <div class="job-description">
+                            <p>Experienced diesel mechanic needed for fleet maintenance in our state-of-the-art facility.</p>
+                            <ul class="job-requirements">
+                                <li><strong>Requirements:</strong></li>
+                                <li>3+ years heavy-duty truck repair experience</li>
+                                <li>Diesel mechanic certification (preferred)</li>
+                                <li>Own tools</li>
+                                <li>Strong diagnostic skills</li>
+                            </ul>
+                            <div class="job-perks">
+                                <span class="perk"> $65,000 - $85,000/year</span>
+                                <span class="perk"> Tool Allowance</span>
+                                <span class="perk"> Day Shift</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <h3>Dispatcher</h3>
+                                <div class="job-meta">
+                                    <span class="job-type">Full-Time</span>
+                                    <span class="job-location"> Calgary, AB</span>
+                                </div>
+                            </div>
+                            <button class="apply-btn">Apply Now</button>
+                        </div>
+                        <div class="job-description">
+                            <p>Coordinate daily operations and communicate with drivers to ensure efficient delivery schedules.</p>
+                            <ul class="job-requirements">
+                                <li><strong>Requirements:</strong></li>
+                                <li>1+ years dispatch or logistics experience</li>
+                                <li>Excellent communication skills</li>
+                                <li>Ability to multitask and work under pressure</li>
+                                <li>Knowledge of transportation regulations</li>
+                            </ul>
+                            <div class="job-perks">
+                                <span class="perk"> $50,000 - $65,000/year</span>
+                                <span class="perk"> Office Environment</span>
+                                <span class="perk"> Performance Bonuses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-section" id="application">
+                    <h2>Ready to Apply?</h2>
+                    <div class="application-grid">
+                        <div class="application-info">
+                            <h3>How to Apply</h3>
+                            <p>We make applying easy. Send us your resume and a brief cover letter explaining why you'd be a great fit for our team.</p>
+                            
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <span class="contact-icon"></span>
+                                    <div>
+                                        <strong>Email</strong>
+                                        <p><a href="mailto:careers@westcorelinks.com">careers@westcorelinks.com</a></p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <span class="contact-icon"></span>
+                                    <div>
+                                        <strong>Phone</strong>
+                                        <p><a href="tel:+17804011313">+1 (&&&) &&&-&&&&</a></p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <span class="contact-icon"></span>
+                                    <div>
+                                        <strong>Visit Us</strong>
+                                        <p>123 Sample Drive, Calgary, AB</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="application-tips">
+                                <h4>Application Tips</h4>
+                                <ul>
+                                    <li>Include your complete work history</li>
+                                    <li>List all relevant certifications and licenses</li>
+                                    <li>Mention the position you're applying for</li>
+                                    <li>Provide references from previous employers</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="application-highlights">
+                            <h3>What Happens Next?</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">1</div>
+                                    <div class="timeline-content">
+                                        <strong>Application Review</strong>
+                                        <p>We'll review your application within 3-5 business days</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">2</div>
+                                    <div class="timeline-content">
+                                        <strong>Initial Interview</strong>
+                                        <p>Phone or video interview with our HR team</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">3</div>
+                                    <div class="timeline-content">
+                                        <strong>In-Person Interview</strong>
+                                        <p>Meet with department managers and team members</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">4</div>
+                                    <div class="timeline-content">
+                                        <strong>Job Offer</strong>
+                                        <p>Welcome to the Westcore Links family!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Westcore Links. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/theme.js"></script>
+    <script>
+        // Add event listeners to all Apply Now buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyButtons = document.querySelectorAll('.apply-btn');
+            applyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const applicationSection = document.getElementById('application');
+                    if (applicationSection) {
+                        applicationSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <script>
+        // Apply theme immediately to prevent flash
+        (function() {
+            // Migrate old theme key
+            const oldTheme = localStorage.getItem('theme');
+            if (oldTheme && !localStorage.getItem('westcore-theme')) {
+                localStorage.setItem('westcore-theme', oldTheme);
+                localStorage.removeItem('theme');
+            }
+            const theme = localStorage.getItem('westcore-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#d4772c">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Westcore">
+    <link rel="apple-touch-icon" href="/images/logos/icon-192.jpg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <a href="/" class="company-logo westcore-logo">
+                        <img src="/images/logos/westcore-logo.svg" alt="Westcore Links Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo northhaul-logo">
+                        <img src="/images/logos/northhaul-logo.svg" alt="North Haul Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo holdings-logo">
+                        <img src="/images/logos/westcore holding-logo.svg" alt="WestCore Holdings Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="/">Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/about" class="active">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#our-team">Our Team</a></li>
+                            <li><a href="#mission">Mission</a></li>
+                            <li><a href="#history">History</a></li>
+                            <li><a href="#certifications">Industry Certifications</a></li>
+                            <li><a href="#reviews">Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#">Company</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/westcore">Westcore Links</a></li>
+                            <li><a href="/northhaul">NorthHaul</a></li>
+                            <li><a href="/storage">Westcore Holdings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/admin" class="admin-link">Admin</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <div class="container">
+                <h1>About Us</h1>
+                <p class="hero-subtitle">Reliable and guaranteed over-the-road transport across Canada and the USA.</p>
+            </div>
+        </section>
+
+        <!-- Our Team Section -->
+        <section id="our-team" class="about-section team-section">
+            <div class="container">
+                <h2>Our Team</h2>
+                <p class="section-intro">Our success is driven by the dedication and expertise of our professional team. From our experienced drivers to our skilled dispatchers and management, every member of Westcore Links is committed to delivering excellence.</p>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <h3>Expert Management</h3>
+                        <p>Seasoned leadership with over 60 years of combined industry experience guiding strategic operations and client relationships.</p>
+                    </div>
+                    <div class="team-card">
+                        <h3>Professional Drivers</h3>
+                        <p>Safety-trained and certified drivers who undergo continuous training and annual reviews to ensure the highest standards.</p>
+                    </div>
+                    <div class="team-card">
+                        <h3>24/7 Dispatch</h3>
+                        <p>Our round-the-clock dispatch team ensures rapid response times and real-time tracking for all shipments.</p>
+                    </div>
+                    <div class="team-card">
+                        <h3>Maintenance Crew</h3>
+                        <p>Dedicated technicians keeping our fleet of 50+ trucks and trailers in peak condition for safe, reliable transport.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="mission" class="about-section mission-section">
+            <div class="container">
+                <div class="split-content">
+                    <div class="content-text">
+                        <h2>Our Mission</h2>
+                        <p>Our more than six decades of knowledgeable experience in the transport business means we can stand out in front of the crowd. Honorable in our principles and actions, we excel as the go-to leader for safe and on-time transport that goes beyond borders.</p>
+                        <p>We are the company known for using the best trucks, trailers, and drivers for heavy industrial loads, including oversize loads. At Westcore Links, we're passionate about delivering freight in a timely and efficient manner while building strong business relationships with our customers.</p>
+                        <div class="mission-values">
+                            <div class="value-item">
+
+                                <strong>Reliability</strong> - On-time delivery, guaranteed
+                            </div>
+                            <div class="value-item">
+                                <strong>Safety First</strong> - Certified and compliant operations
+                            </div>
+                            <div class="value-item">
+                                <strong>Trust</strong> - Building lasting partnerships
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-images">
+                        <div class="image-cluster left-cluster">
+                            <div class="circle-image large">
+                                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&q=80" alt="Truck on highway">
+                            </div>
+                            <div class="circle-image medium top">
+                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=80" alt="Freight transport">
+                            </div>
+                            <div class="circle-image medium bottom">
+                                <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=400&q=80" alt="Delivery truck">
+                            </div>
+                            <div class="circle-image small">
+                                <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=300&q=80" alt="Cargo hauling">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="about-section history-section">
+            <div class="container">
+                <h2>Our History</h2>
+                <div class="history-content">
+                    <div class="history-text">
+                        <p class="lead-text">Westcore Links is a customer service driven trucking company based in Nisku, Alberta. We are a full-service LTL/Full Load Carrier and Hot Shot Carrier with over sixty years experience in the heavy hauling industry.</p>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">1960s</div>
+                                <div class="timeline-content">
+                                    <h3>Foundation Years</h3>
+                                    <p>Started operations serving the growing oil and gas industry in Alberta with a focus on reliability and safety.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1990s</div>
+                                <div class="timeline-content">
+                                    <h3>Expansion Era</h3>
+                                    <p>Expanded our fleet and services to cover routes across Canada and into the United States.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2020s</div>
+                                <div class="timeline-content">
+                                    <h3>Modern Excellence</h3>
+                                    <p>Grew to 50+ trucks and trailers with cutting-edge technology and 24/7/365 operations serving all of North America.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fleet-stats">
+                        <div class="stat-box">
+                            <div class="stat-number">60+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Trucks & Trailers</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Operations</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Commitment</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Certifications Section -->
+        <section id="certifications" class="about-section certifications-section">
+            <div class="container">
+                <h2>Industry certified</h2>
+                <p class="section-intro">Westcore Links prioritizes the safety of our clients and workers at all times. When you work with our team, you're working with a team that puts safety above profits.</p>
+                
+                <div class="certifications-scroll-wrapper">
+                    <div class="certifications-logos">
+                        <a href="https://www.cbsa-asfc.gc.ca/prog/fast-expres/about-apropos-eng.html" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/fast-enterprises.png" alt="Fast Enterprises - Free and Secure Trade">
+                        </a>
+                        <a href="https://amta.ca/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/hazmat.png" alt="HAZMAT Certified">
+                        </a>
+                        <a href="https://www.epa.gov/smartway" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/smartway.png" alt="SmartWay Transport Partnership">
+                        </a>
+                        <a href="https://www.isnetworld.com/en" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/isn.png" alt="ISN - ISNetworld">
+                        </a>
+                        <a href="https://www.avetta.com/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/avetta.png" alt="Avetta Member">
+                        </a>
+                        <a href="https://www.cbp.gov/border-security/ports-entry/cargo-security/CTPAT" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/ctpat.png" alt="C-TPAT - Customs Trade Partnership Against Terrorism">
+                        </a>
+                        <!-- Duplicate for seamless loop -->
+                        <a href="https://www.cbsa-asfc.gc.ca/prog/fast-expres/about-apropos-eng.html" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/fast-enterprises.png" alt="Fast Enterprises - Free and Secure Trade">
+                        </a>
+                        <a href="https://amta.ca/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/hazmat.png" alt="HAZMAT Certified">
+                        </a>
+                        <a href="https://www.epa.gov/smartway" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/smartway.png" alt="SmartWay Transport Partnership">
+                        </a>
+                        <a href="https://www.isnetworld.com/en" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/isn.png" alt="ISN - ISNetworld">
+                        </a>
+                        <a href="https://www.avetta.com/" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/avetta.png" alt="Avetta Member">
+                        </a>
+                        <a href="https://www.cbp.gov/border-security/ports-entry/cargo-security/CTPAT" target="_blank" rel="noopener noreferrer" class="cert-logo-circle">
+                            <img src="/images/certifications/ctpat.png" alt="C-TPAT - Customs Trade Partnership Against Terrorism">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="about-section reviews-section">
+            <div class="container">
+                <h2>Client Reviews</h2>
+                <p class="section-intro">We've had the privilege to deliver a variety of shipments for our clientele across Canada and the United States. We stand by the ethic to always prioritize client care and respect throughout the entirety of the delivery process.</p>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"Great to deal with. Professional service and always on time."</p>
+                        <p class="testimonial-author">- Richard Wiebe</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"Started with this company at the beginning of the year, and have enjoyed it immensely. They are a growing fairly new company. The management here doesn't lie or play games. Can't say enough good things about this company."</p>
+                        <p class="testimonial-author">- Michael Walsh</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="testimonial-text">"We were recently in a pinch with a missed pick up on a Friday afternoon for a rush shipment, Gurp at Westcore not only had our shipment picked up asap he stayed on top of it all weekend to ensure it reached our consignee Monday morning at 7:30am. Fantastic customer service and great value."</p>
+                        <p class="testimonial-author">- Meagan Cienciala</p>
+                    </div>
+                </div>
+
+                <div class="review-cta">
+                    <h3>Experience the Westcore Difference</h3>
+                    <p>Join hundreds of satisfied clients who trust us with their transportation needs.</p>
+                    <a href="/contact" class="cta-button">Get Started Today</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Strength Beyond Borders</h2>
+                <p>Westcore Links is a long-haul transport company based in Nisku, Alberta, and serving all destinations in North America with a fleet of over 50 trucks. Our 24/7/365 schedule can accommodate private or corporate projects. We guarantee safe and timely hauls.</p>
+                <div class="cta-buttons">
+                    <a href="/contact" class="cta-button">Contact Us</a>
+                    <a href="/services" class="cta-button secondary">Our Services</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Westcore Links. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/theme.js"></script>
+    
+    <!-- PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed:', err));
+        }
+    </script>
+</body>
+</html>

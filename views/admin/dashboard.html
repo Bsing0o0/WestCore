@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Westcore Links</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <div class="admin-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Westcore Links</h2>
+        <p class="sidebar-subtitle">Admin Panel</p>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="/admin/dashboard" class="nav-item active">
+          <span class="nav-icon">📊</span>
+          Dashboard
+        </a>
+        <a href="/admin/gallery" class="nav-item">
+          <span class="nav-icon">🖼️</span>
+          Gallery
+        </a>
+        <a href="/admin/locations" class="nav-item">
+          <span class="nav-icon">📍</span>
+          Locations
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <div class="user-info">
+          <span class="user-icon">👤</span>
+          <span class="user-name" id="username">Admin</span>
+        </div>
+        <button class="btn-logout" id="logout-btn">Logout</button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="content-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="text-muted">Welcome back! Here's your overview.</p>
+        </div>
+        <div class="header-actions">
+          <a href="/" class="btn btn-outline" target="_blank">
+            View Website →
+          </a>
+        </div>
+      </header>
+      
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            🖼️
+          </div>
+          <div class="stat-content">
+            <p class="stat-label">Gallery Images</p>
+            <h3 class="stat-value" id="gallery-count">-</h3>
+            <p class="stat-change positive">Active images</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            📍
+          </div>
+          <div class="stat-content">
+            <p class="stat-label">Locations</p>
+            <h3 class="stat-value" id="locations-count">-</h3>
+            <p class="stat-change positive">Active locations</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            📁
+          </div>
+          <div class="stat-content">
+            <p class="stat-label">Storage Used</p>
+            <h3 class="stat-value" id="storage-used">-</h3>
+            <p class="stat-change">Total files</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+            ⚡
+          </div>
+          <div class="stat-content">
+            <p class="stat-label">System Status</p>
+            <h3 class="stat-value">Online</h3>
+            <p class="stat-change positive">All systems operational</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Quick Actions -->
+      <div class="section-card">
+        <h2 class="section-title">Quick Actions</h2>
+        <div class="actions-grid">
+          <a href="/admin/gallery" class="action-card">
+            <span class="action-icon">📷</span>
+            <h3>Upload Images</h3>
+            <p>Add new images to gallery</p>
+          </a>
+          
+          <a href="/admin/locations" class="action-card">
+            <span class="action-icon">✏️</span>
+            <h3>Edit Locations</h3>
+            <p>Update location content</p>
+          </a>
+          
+          <a href="/" target="_blank" class="action-card">
+            <span class="action-icon">🌐</span>
+            <h3>View Website</h3>
+            <p>See live site</p>
+          </a>
+          
+          <div class="action-card" id="change-password-card">
+            <span class="action-icon">🔐</span>
+            <h3>Change Password</h3>
+            <p>Update your password</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Recent Activity -->
+      <div class="section-card">
+        <h2 class="section-title">Recent Activity</h2>
+        <div class="activity-list" id="activity-list">
+          <p class="text-muted">Loading activity...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script>
+    // Theme management
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('.theme-icon');
+    
+    // Initialize theme from localStorage
+    const savedTheme = localStorage.getItem('westcore-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    
+    // Theme toggle handler
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('westcore-theme', newTheme);
+      themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    
+    // Check authentication
+    fetch('/admin/api/auth/status')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.isAuthenticated) {
+          window.location.href = '/admin/login';
+          return;
+        }
+        document.getElementById('username').textContent = data.user.username;
+      })
+      .catch(() => {
+        window.location.href = '/admin/login';
+      });
+    
+    // Logout functionality
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/admin/api/auth/logout', {
+          method: 'POST'
+        });
+        
+        if (response.ok) {
+          window.location.href = '/admin/login';
+        }
+      } catch (error) {
+        console.error('Logout error:', error);
+      }
+    });
+    
+    // Load dashboard statistics
+    async function loadStats() {
+      try {
+        // Get gallery count
+        const galleryRes = await fetch('/admin/api/gallery');
+        const galleryData = await galleryRes.json();
+        if (galleryData.success) {
+          document.getElementById('gallery-count').textContent = galleryData.images.length;
+        }
+        
+        // Get locations count
+        const locationsRes = await fetch('/admin/api/locations');
+        const locationsData = await locationsRes.json();
+        if (locationsData.success) {
+          document.getElementById('locations-count').textContent = locationsData.locations.length;
+          
+          // Calculate storage
+          const totalSize = galleryData.images.reduce((sum, img) => sum + (img.file_size || 0), 0);
+          const sizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+          document.getElementById('storage-used').textContent = sizeMB + ' MB';
+        }
+        
+        // Show recent activity
+        const activityList = document.getElementById('activity-list');
+        const recentImages = galleryData.images.slice(0, 5);
+        
+        if (recentImages.length === 0) {
+          activityList.innerHTML = '<p class="text-muted">No recent activity</p>';
+        } else {
+          activityList.innerHTML = recentImages.map(img => `
+            <div class="activity-item">
+              <span class="activity-icon">📷</span>
+              <div class="activity-content">
+                <p class="activity-title">Image uploaded: ${img.original_name}</p>
+                <p class="activity-time">${new Date(img.uploaded_at).toLocaleString()}</p>
+              </div>
+            </div>
+          `).join('');
+        }
+      } catch (error) {
+        console.error('Error loading stats:', error);
+      }
+    }
+    
+    loadStats();
+    
+    // Change password action
+    document.getElementById('change-password-card').addEventListener('click', () => {
+      const currentPass = prompt('Enter your current password:');
+      if (!currentPass) return;
+      
+      const newPass = prompt('Enter your new password (min 8 characters):');
+      if (!newPass || newPass.length < 8) {
+        alert('New password must be at least 8 characters');
+        return;
+      }
+      
+      fetch('/admin/api/auth/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          currentPassword: currentPass,
+          newPassword: newPass
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert('Password changed successfully!');
+        } else {
+          alert(data.message || 'Failed to change password');
+        }
+      })
+      .catch(err => {
+        alert('Error changing password');
+        console.error(err);
+      });
+    });
+  </script>
+</body>
+</html>

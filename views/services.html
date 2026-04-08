@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Westcore Links</title>
+    <script>
+        // Apply theme immediately to prevent flash
+        (function() {
+            // Migrate old theme key
+            const oldTheme = localStorage.getItem('theme');
+            if (oldTheme && !localStorage.getItem('westcore-theme')) {
+                localStorage.setItem('westcore-theme', oldTheme);
+                localStorage.removeItem('theme');
+            }
+            const theme = localStorage.getItem('westcore-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#d4772c">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Westcore">
+    <link rel="apple-touch-icon" href="/images/logos/icon-192.jpg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <a href="/" class="company-logo westcore-logo">
+                        <img src="/images/logos/westcore-logo.svg" alt="Westcore Links Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo northhaul-logo">
+                        <img src="/images/logos/northhaul-logo.svg" alt="North Haul Logo" class="logo-image">
+                    </a>
+                    <span class="logo-separator">|</span>
+                    <a href="/" class="company-logo holdings-logo">
+                        <img src="/images/logos/westcore holding-logo.svg" alt="WestCore Holdings Logo" class="logo-image">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="/">Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="/about">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/about#our-team">Our Team</a></li>
+                            <li><a href="/about#mission">Mission</a></li>
+                            <li><a href="/about#history">History</a></li>
+                            <li><a href="/about#certifications">Industry Certifications</a></li>
+                            <li><a href="/about#reviews">Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#">Company</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/westcore">Westcore Links</a></li>
+                            <li><a href="/northhaul">NorthHaul</a></li>
+                            <li><a href="/storage">Westcore Holdings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/services" class="active">Services</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/admin" class="admin-link">Admin</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services-hero">
+            <div class="container">
+                <h1>Services</h1>
+                <p class="hero-subtitle">Trucking services that stretch throughout continental North America.</p>
+            </div>
+        </section>
+
+        <section class="services-detailed">
+            <div class="container">
+                
+                <!-- Full Loads -->
+                <div class="service-block">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&h=400&fit=crop&q=80" alt="Full load trucking">
+                    </div>
+                    <h2> Full Loads (FL)</h2>
+                    <div class="service-content">
+                        <div class="service-description">
+                            <p>Full load trucking allows your goods to move on their own with no route stops, unlike LTL (Less-Than-Full Load) trucking, which combines different loads from different customers onto one truck. Your shipment gets the entire trailer and a driver who will deliver your load straight to its destination. We offer perfect-fit FTL freight services, including tandem services, for clients with heavy loads going over long distances. Our scheduling is flexible, and our team more than capable of handling the logistics of your shipment.</p>
+                            <p>If you're a company that needs FTL shipments regularly, the Westcore team will create a custom schedule for your shipments with no stops, keeping your goods arriving on schedule.</p>
+                            <p>Are you shipping something that requires extra care? Reserve now to get exclusive space on our schedule and book our specialized equipment that can handle the most sensitive shipments. Our pricing is competitive, and our customer service will leave you worry-free about your shipments. With our satellite tracking, you'll always know the location and status of your freight.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Less-Than Full Loads -->
+                <div class="service-block">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=400&fit=crop&q=80" alt="LTL shipping">
+                    </div>
+                    <h2> Less-Than Full Loads (LTL)</h2>
+                    <div class="service-content">
+                        <div class="service-description">
+                            <p>Westcore Links provides LTL services for all types of shipments on two regular routes scheduled two times a week, between Canada and the US.</p>
+                            <p>With over 400,000 trips delivered, our regular LTL services provide reliable and economical services to the oilfield and associated industries throughout Alberta, the Dakotas, and the Northeast U.S. Cargo projects that require special accommodations are assigned to experienced managers and drivers.</p>
+                            <p><strong>Call 780-430-0331 to inquire how we can help you deliver your cargo.</strong></p>
+                            <h4>Our LTL service runs as follows:</h4>
+                            <div class="ltl-routes">
+                                <div class="route-box">
+                                    <h5>From Alberta to Texas, Wyoming, Colorado, Oklahoma and return</h5>
+                                    <ul>
+                                        <li>Tuesday Pickup/Friday Delivery</li>
+                                        <li>Friday Pickup/Tuesday Delivery</li>
+                                    </ul>
+                                </div>
+                                <div class="route-box">
+                                    <h5>From Alberta to North Dakota, South Dakota, North Eastern U.S.A. and return</h5>
+                                    <ul>
+                                        <li>Friday Pickup/Delivery time will vary based on customer destination</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hot Shots -->
+                <div class="service-block">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1200&h=400&fit=crop&q=80" alt="Hot shot delivery">
+                    </div>
+                    <h2> Hot Shots</h2>
+                    <div class="service-content">
+                        <div class="service-description">
+                            <p>Do you have an urgent shipment that needs to leave now and be delivered asap – one single shot by a ready team without delay or pause? We keep a hot shot team on standby 24/7/365. If you have a shipment that's sensitive and requires special attention, we can accommodate any cargo on a hot shot run whether your load is going across Canada or into the U.S.</p>
+                            <p>We use roll-tite trailers for large and cumbersome equipment, so your shipment stays safe from the elements and securely intact while in transport. You'll have satellite updates in real-time at any time and our excellent customer service keeps you informed of where your shipment is located and any issues that we may encounter.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oversize Loads -->
+                <div class="service-block">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?w=1200&h=400&fit=crop&q=80" alt="Oversize cargo">
+                    </div>
+                    <h2> Oversize Loads</h2>
+                    <div class="service-content">
+                        <div class="service-description">
+                            <p>What's your oversized shipment experience been like with other trucking companies? The experienced team at Westcore Links has made the process go easy for our oversize shipment clients. You should be one of them. We are a full-service flatbed and step deck carrier, providing legal and oversized loads to meet our customers' delivery needs.</p>
+                            <p>We keep abreast of all the regulations both here and in the U.S. and our team of experts will work with you on all paperwork issues like obtaining the correct permits and ease load routings. Our multi-axle options and oversize equipment can handle any size load. Our equipment for oversize jobs includes step decks, double drop trailers, extendable double drops, mini decks, and beavertails.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Open/Enclosed Transportation -->
+                <div class="service-block">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1511406361295-0a1ff814c0ce?w=1200&h=400&fit=crop&q=80" alt="Enclosed trailers">
+                    </div>
+                    <h2> Open/Enclosed Transportation</h2>
+                    <div class="service-content">
+                        <div class="service-description">
+                            <p>When selecting an appropriate trailer for your shipment, there are two available choices to select from: open and enclosed. Each has their own individual advantages based on the metrics of your delivery.</p>
+                            <p>An enclosed trailer for example is more expensive however offers protection against the weather and potential theft.</p>
+                            <p>An open trailer on the other hand is less expensive, is easier to maneuver and is less work to maintain.</p>
+                            <p>If you're unsure about which of these options is right for you, please don't hesitate to reach out by calling us at the following toll free number where a member of our team can guide you on which trailer is best suited to your shipment: <strong><a href="tel:780-430-0331">780-430-0331</a></strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brokerage Services -->
+                <div class="service-block">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&h=400&fit=crop&q=80" alt="Freight brokerage">
+                    </div>
+                    <h2> Brokerage Services</h2>
+                    <div class="service-content">
+                        <div class="service-description">
+                            <p>At Westcore Links, we understand the journey of your goods is as important as their destination. That's why we offer comprehensive freight brokerage services to ensure your shipments reach their destinations while offering a one-stop shop for all your logistical needs.</p>
+                            <ul class="service-features">
+                                <li><strong>Competitive Rates:</strong> We negotiate the best shipping rates, saving you time and money.</li>
+                                <li><strong>Carrier Network:</strong> Access to a vast network of trusted carriers.</li>
+                                <li><strong>Custom Solutions:</strong> Tailored services to meet your unique shipping needs.</li>
+                                <li><strong>Dedicated Support:</strong> Our team is here to assist you every step of the way.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="service-commitment">
+            <div class="container">
+                <h2>Our Commitment to Excellence</h2>
+                <div class="commitment-grid">
+                    <div class="commitment-text">
+                        <h3>You name it. We've delivered it.</h3>
+                        <p>The transport business is about people as much as it's about trucks and trailers. You need the right kind of both.</p>
+                        <p>Our key individuals bring a wealth of knowledge with an accumulated 60+ years in the trucking industry, safely shipping oilfield equipment, steel products, and heavy machinery all over Canada and the United States, including Alaska. Our logistics teams support complex transportation needs with expert navigation.</p>
+                        <p>Our fleet consists of owner-operators and company drivers with multi-axle combinations and roll-tite trailers. Our team brings experience in moving every kind of cargo through the most challenging conditions imaginable.</p>
+                    </div>
+                    <div class="commitment-text">
+                        <p>We use satellite tracking, so you'll always know the status of your shipment, and we'll notify you of pickup, delivery, and document scans. Our customer service is second to none.</p>
+                        <p>Our track record demonstrates a commitment to safety, both sides of the border.</p>
+                        <h4>You can depend on Westcore Links for:</h4>
+                        <ul class="service-features">
+                            <li>Two Regular LTL Service Routes</li>
+                            <li>Full Load Service</li>
+                            <li>Hot Shots</li>
+                            <li>Oversize Shipment and Cargo Projects</li>
+                        </ul>
+                        <p><strong>Whether you engage us for full loads, less-than-full loads, hot shots, and oversize loads, we'll deliver your shipment on-time and intact.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>ON CALL / 365 DAYS A YEAR</h2>
+                <p>Our team is available around the clock to ensure you're never left in the dark about your shipment.</p>
+                <div class="cta-buttons">
+                    <a href="tel:780-430-0331" class="cta-button">780-430-0331</a>
+                    <a href="tel:832-848-0225" class="cta-button">832-848-0225</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class ="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Westcore Links. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/theme.js"></script>
+    <script src="/js/services.js"></script>
+</body>
+</html>

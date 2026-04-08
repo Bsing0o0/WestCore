@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Locations - Westcore Links Admin</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <div class="admin-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Westcore Links</h2>
+        <p class="sidebar-subtitle">Admin Panel</p>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="/admin/dashboard" class="nav-item">
+          <span class="nav-icon">📊</span>
+          Dashboard
+        </a>
+        <a href="/admin/gallery" class="nav-item">
+          <span class="nav-icon">🖼️</span>
+          Gallery
+        </a>
+        <a href="/admin/locations" class="nav-item active">
+          <span class="nav-icon">📍</span>
+          Locations
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <div class="user-info">
+          <span class="user-icon">👤</span>
+          <span class="user-name" id="username">Admin</span>
+        </div>
+        <button class="btn-logout" id="logout-btn">Logout</button>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="content-header">
+        <div>
+          <h1>Manage Locations</h1>
+          <p class="text-muted">Edit location details and company information</p>
+        </div>
+        <div class="header-actions">
+          <a href="/" class="btn btn-outline" target="_blank">
+            View Website →
+          </a>
+        </div>
+      </header>
+      
+      <!-- Alert Messages -->
+      <div id="alert-message" class="alert" style="display: none;"></div>
+      
+      <!-- Locations Table -->
+      <div class="section-card">
+        <h2 class="section-title">All Locations</h2>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Address</th>
+                <th>Coordinates</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="locations-table-body">
+              <tr>
+                <td colspan="5" class="text-center">Loading locations...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Edit Location Modal -->
+  <div id="edit-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Edit Location</h2>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <form id="edit-location-form">
+        <input type="hidden" id="edit-location-id">
+        
+        <div class="form-group">
+          <label for="edit-title">Location Title</label>
+          <input type="text" id="edit-title" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="edit-company">Company</label>
+          <select id="edit-company" required>
+            <option value="Westcore Links">Westcore Links</option>
+            <option value="NorthHaul">NorthHaul</option>
+            <option value="Westcore Holdings">Westcore Holdings</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="edit-address">Address</label>
+          <textarea id="edit-address" rows="3" required></textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="edit-latitude">Latitude</label>
+            <input type="number" id="edit-latitude" step="any">
+          </div>
+          <div class="form-group">
+            <label for="edit-longitude">Longitude</label>
+            <input type="number" id="edit-longitude" step="any">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="edit-learn-more">Learn More URL (optional)</label>
+          <input type="text" id="edit-learn-more" placeholder="/westcore">
+        </div>
+        
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/theme.js"></script>
+  <script>
+    // Theme management
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('.theme-icon');
+    
+    const savedTheme = localStorage.getItem('westcore-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('westcore-theme', newTheme);
+      themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+    
+    // Check authentication
+    fetch('/admin/api/auth/status')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.isAuthenticated) {
+          window.location.href = '/admin/login';
+          return;
+        }
+        document.getElementById('username').textContent = data.user.username;
+      })
+      .catch(() => {
+        window.location.href = '/admin/login';
+      });
+    
+    // Logout functionality
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/admin/api/auth/logout', {
+          method: 'POST'
+        });
+        
+        if (response.ok) {
+          window.location.href = '/admin/login';
+        }
+      } catch (error) {
+        console.error('Logout error:', error);
+      }
+    });
+
+    // Alert functions
+    function showAlert(message, type = 'success') {
+      const alert = document.getElementById('alert-message');
+      alert.textContent = message;
+      alert.className = `alert alert-${type}`;
+      alert.style.display = 'block';
+      setTimeout(() => {
+        alert.style.display = 'none';
+      }, 5000);
+    }
+
+    // Load locations
+    async function loadLocations() {
+      try {
+        const response = await fetch('/admin/api/locations');
+        const data = await response.json();
+        
+        if (!data.success) {
+          throw new Error(data.message || 'Failed to load locations');
+        }
+        
+        const tbody = document.getElementById('locations-table-body');
+        
+        if (data.locations.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" class="text-center">No locations found</td></tr>';
+          return;
+        }
+        
+        tbody.innerHTML = data.locations.map(loc => `
+          <tr>
+            <td><strong>${escapeHtml(loc.title)}</strong></td>
+            <td><span class="badge">${escapeHtml(loc.company || 'Westcore Links')}</span></td>
+            <td>${escapeHtml(loc.address || 'N/A')}</td>
+            <td class="text-muted">${loc.latitude ? `${loc.latitude}, ${loc.longitude}` : 'Not set'}</td>
+            <td>
+              <button class="btn btn-sm btn-primary" onclick="editLocation(${loc.id})">Edit</button>
+            </td>
+          </tr>
+        `).join('');
+      } catch (error) {
+        console.error('Error loading locations:', error);
+        showAlert('Failed to load locations', 'error');
+      }
+    }
+
+    // Edit location
+    function editLocation(id) {
+      fetch(`/admin/api/locations/${id}`)
+        .then(res => res.json())
+        .then(data => {
+          if (!data.success) {
+            throw new Error(data.message);
+          }
+          
+          const loc = data.location;
+          document.getElementById('edit-location-id').value = loc.id;
+          document.getElementById('edit-title').value = loc.title || '';
+          document.getElementById('edit-company').value = loc.company || 'Westcore Links';
+          document.getElementById('edit-address').value = loc.address || '';
+          document.getElementById('edit-latitude').value = loc.latitude || '';
+          document.getElementById('edit-longitude').value = loc.longitude || '';
+          document.getElementById('edit-learn-more').value = loc.learnMoreUrl || '';
+          
+          document.getElementById('edit-modal').style.display = 'flex';
+        })
+        .catch(error => {
+          console.error('Error fetching location:', error);
+          showAlert('Failed to load location details', 'error');
+        });
+    }
+
+    // Close modal
+    document.getElementById('modal-close').addEventListener('click', () => {
+      document.getElementById('edit-modal').style.display = 'none';
+    });
+    
+    document.getElementById('cancel-btn').addEventListener('click', () => {
+      document.getElementById('edit-modal').style.display = 'none';
+    });
+
+    // Submit form
+    document.getElementById('edit-location-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const id = document.getElementById('edit-location-id').value;
+      const data = {
+        title: document.getElementById('edit-title').value,
+        company: document.getElementById('edit-company').value,
+        address: document.getElementById('edit-address').value,
+        latitude: document.getElementById('edit-latitude').value || null,
+        longitude: document.getElementById('edit-longitude').value || null,
+        learnMoreUrl: document.getElementById('edit-learn-more').value || null
+      };
+      
+      try {
+        const response = await fetch(`/admin/api/locations/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (!result.success) {
+          throw new Error(result.message);
+        }
+        
+        showAlert('Location updated successfully!', 'success');
+        document.getElementById('edit-modal').style.display = 'none';
+        loadLocations();
+      } catch (error) {
+        console.error('Error updating location:', error);
+        showAlert('Failed to update location', 'error');
+      }
+    });
+
+    // Escape HTML
+    function escapeHtml(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    // Load locations on page load
+    loadLocations();
+  </script>
+
+  <style>
+    .alert {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    
+    .alert-success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #6ee7b7;
+    }
+    
+    .alert-error {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+    
+    .table-container {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .data-table th {
+      background: var(--color-bg-secondary);
+      padding: 1rem;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 2px solid var(--color-border);
+    }
+    
+    .data-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .data-table tr:hover {
+      background: var(--color-bg-secondary);
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--color-accent);
+      color: white;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    [data-theme="dark"] .modal-content {
+      background: var(--color-sidebar);
+      color: var(--color-text-light);
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .modal-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--color-text);
+      line-height: 1;
+    }
+    
+    .modal-content form {
+      padding: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid var(--color-border);
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: var(--color-bg-primary);
+      color: var(--color-text);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+    }
+    
+    .text-center {
+      text-align: center;
+      padding: 2rem;
+      color: var(--color-text-light);
+    }
+  </style>
+</body>
+</html>

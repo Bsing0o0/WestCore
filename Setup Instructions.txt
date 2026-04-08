@@ -1,0 +1,78 @@
+#Setup Instructions
+#Last updates 24 Dec
+
+Install dependencies:
+
+bashnpm install
+
+Configure environment:
+
+bashcp .env.example .env
+# Edit .env with your database credentials
+
+Create database:
+
+bash
+mysql -u root -p < database/schema.sql
+
+Create upload directories:
+
+bashmkdir -p public/uploads/gallery public/uploads/locations
+
+Start server:
+
+bashnpm run dev  # Development with nodemon
+npm start    # Production
+
+Default login:
+
+Username: admin
+Password: changeme123
+⚠️ CHANGE THIS IMMEDIATELY after first login!
+
+
+westcore-links/
+├── server.js
+├── package.json
+├── .env.example
+├── .gitignore
+├── config/
+│   └── database.js
+├── middleware/
+│   └── auth.js
+├── routes/
+│   ├── admin.js
+│   └── public.js
+├── controllers/
+│   ├── authController.js
+│   ├── galleryController.js
+│   └── locationsController.js
+├── database/
+│   └── schema.sql
+├── public/
+│   ├── css/
+│   │   ├── main.css
+│   │   └── admin.css
+│   ├── js/
+│   │   ├── theme.js
+│   │   └── admin.js
+│   ├── images/
+│   └── uploads/
+│       ├── gallery/
+│       └── locations/
+└── views/
+    ├── index.html
+    ├── about.html
+    ├── services.html
+    ├── locations/
+    │   ├── western-canada.html
+    │   ├── eastern-canada.html
+    │   └── usa.html
+    ├── careers.html
+    ├── gallery.html
+    ├── contact.html
+    └── admin/
+        ├── login.html
+        ├── dashboard.html
+        ├── gallery-manage.html
+        └── locations-manage.html
